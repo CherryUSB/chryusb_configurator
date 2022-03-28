@@ -1,0 +1,53 @@
+{
+  "name": "chryusb_configurator",
+  "version": "1.0.0",
+  "main": "dist/main/index.cjs",
+  "author": "Egahp <2687434412@qq.com>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "node scripts/watch.mjs",
+    "prebuild": "vue-tsc --noEmit --p packages/renderer/tsconfig.json && node scripts/build.mjs",
+    "build": "electron-builder",
+    "init": "git config core.hooksPath .git/hooks/ && rm -rf .git/hooks && npx simple-git-hooks",
+    "test:e2e": "npx playwright test",
+    "test:e2e:headless": "npx playwright test --headed"
+  },
+  "engines": {
+    "node": ">=14.17.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.19.2",
+    "@types/sqlite3": "^3.1.8",
+    "@vitejs/plugin-vue": "^2.1.0",
+    "electron": "16.0.8",
+    "electron-builder": "^22.14.5",
+    "nano-staged": "^0.6.0",
+    "simple-git-hooks": "^2.7.0",
+    "typescript": "^4.5.5",
+    "vite": "^2.7.13",
+    "vite-plugin-resolve": "^1.8.0",
+    "vue": "^3.2.29",
+    "vue-tsc": "^0.31.1"
+  },
+  "env": {
+    "VITE_DEV_SERVER_HOST": "127.0.0.1",
+    "VITE_DEV_SERVER_PORT": 3344
+  },
+  "keywords": [
+    "vite",
+    "electron",
+    "vue3",
+    "rollup",
+    "element-plus"
+  ],
+  "dependencies": {
+    "@mdi/font": "^6.5.95",
+    "animate.css": "^4.1.1",
+    "axios": "^0.26.1",
+    "element-plus": "^2.1.5",
+    "jsonc-parser": "^3.0.0",
+    "sqlite3": "^5.0.2",
+    "vue-i18n": "^9.1.9",
+    "vue-router": "^4.0.14"
+  }
+}

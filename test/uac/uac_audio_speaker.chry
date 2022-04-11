@@ -1,0 +1,67 @@
+{
+    "interface": [
+        {
+            "alternate": [
+                {
+                    "string": 0,
+                    "class": "0x01",
+                    "subclass": "0x01",
+                    "protocol": "0x00",
+                    "specific": {
+                        "uac-header": "default",
+                        "uac-group": [
+                            {
+                                "uac-input": "0x0101",
+                                "uac-feature": "default",
+                                "uac-output": "0x0302"
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "alternate": [
+                {
+                    "string": 0,
+                    "class": "0x01",
+                    "subclass": "0x02",
+                    "protocol": "0x00"
+                },
+                {
+                    "string": 0,
+                    "class": "0x01",
+                    "subclass": "0x02",
+                    "protocol": "0x00",
+                    "specific": {
+                        "uac-specific": 0,
+                        "uac-format": {
+                            "channels": 2,
+                            "width": 24,
+                            "rate": [
+                                48000,
+                                44100,
+                                32000,
+                                22050,
+                                16000,
+                                8000
+                            ]
+                        },
+                        "uac-endpoint": "default"
+                    },
+                    "endpoint": [
+                        {
+                            "address": 1,
+                            "direction": "out",
+                            "type": "isoc",
+                            "size": 64,
+                            "interval": 1,
+                            "refresh": 0,
+                            "sync-address": 0
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

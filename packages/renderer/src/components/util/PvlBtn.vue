@@ -1,5 +1,5 @@
 <template>
-    <div class="button" @click="Click" :style="GetStyle">
+    <div class="button" @click="Click" @mousedown="MouseDown" @mouseup="MouseUp" :style="GetStyle">
         <slot></slot>
     </div>
 </template>
@@ -44,7 +44,12 @@ let props = withDefaults(defineProps<Props>(), {
 })
 /* emits ---------------------------------------------------------------------*/
 interface Emit {
-    (event: 'click'): void
+    (event: 'click'): void,
+    (event: 'mousedown'): void,
+    (event: 'mouseup'): void,
+    (event: 'disableClick'): void,
+    (event: 'disableMousedown'): void,
+    (event: 'disableMouseup'): void
 }
 
 const emit = defineEmits<Emit>()
@@ -55,7 +60,29 @@ function Click(): void {
     if (props.disable == false) {
         emit("click");
     }
+    else {
+        emit("disableClick");
+    }
 }
+
+function MouseDown(): void {
+    if (props.disable == false){
+        emit("mousedown");
+    }
+    else{
+        emit("disableMousedown")
+    }
+}
+
+function MouseUp(): void {
+    if (props.disable == false){
+        emit("mouseup");
+    }
+    else{
+        emit("disableMouseup")
+    }
+}
+
 /* computed ------------------------------------------------------------------*/
 const GetStyle = computed((): any => {
     if (props.disable == false) {
@@ -99,6 +126,10 @@ const GetStyle = computed((): any => {
     user-select: none;
 
     transition: ease-in 100ms;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 
     --color: var(--text0);
     --border: var(--border0);

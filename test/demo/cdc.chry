@@ -1,0 +1,63 @@
+{
+    "associate": {
+        "string": 0,
+        "class": "0x02",
+        "subclass": "0x02",
+        "protocol": "0x01",
+        "first": 0,
+        "count": 2
+    },
+    "interface": [
+        {
+            "alternate": [
+                {
+                    "string": 0,
+                    "class": "0x02",
+                    "subclass": "0x02",
+                    "protocol": "0x01",
+                    "specific": {
+                        "type": 3
+                    },
+                    "endpoint": [
+                        {
+                            "address": 4,
+                            "direction": "out",
+                            "type": "intr",
+                            "size": 64,
+                            "interval": 1
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "alternate": [
+                {
+                    "string": 0,
+                    "class": "0x0a",
+                    "subclass": "0x00",
+                    "protocol": "0x00",
+                    "specific": {
+                        "type": 4
+                    },
+                    "endpoint": [
+                        {
+                            "address": 5,
+                            "direction": "out",
+                            "type": "bulk",
+                            "size": 64,
+                            "interval": 0
+                        },
+                        {
+                            "address": 6,
+                            "direction": "in",
+                            "type": "bulk",
+                            "size": 64,
+                            "interval": 0
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

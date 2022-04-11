@@ -1,9 +1,11 @@
 import dark from './dark'
+import light from './light'
 
 const theme = {
-    theme:<string>'dark',
+    theme:<string>'light',
     themes: {
-        "dark": dark
+        "dark": dark,
+        "light": light
     },
     SetTheme: function(key:string):void{
         theme.theme = key

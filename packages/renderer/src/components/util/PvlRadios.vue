@@ -7,7 +7,8 @@
         :disable="item.disable"
         :style="GetStyle(index)"
         @click="RadioClick(index)">
-        <div>{{item.label}}</div>
+        <span :class="GetIcon(index)"></span>
+        <div class="radio-label">{{item.label}}</div>
         <slot></slot>
     </div>
 </template>
@@ -38,7 +39,7 @@
 
 
 /* import --------------------------------------------------------------------*/
-import { onMounted, computed, Ref, ref, reactive} from 'vue';
+import { onMounted, computed, Ref, ref, reactive, watch} from 'vue';
 import theme from '../../theme';
 import {Pvl} from "../../Pvl";
 
@@ -55,8 +56,24 @@ interface Props {
 let props = withDefaults(defineProps<Props>(),{
     disable:false,
     radio:0,
-    radios:()=>[]
+    radios:()=><Array<Pvl.IRadio>>[]
 })
+
+watch(
+    ()=>props.radio,
+    (nval,oval)=>{
+        currentRadio.value = nval;
+        lastRadio.value = oval;
+    }
+)
+
+watch(
+    ()=>props.radios,
+    (nval)=>{
+        radios = nval;
+    },
+    {deep:true}
+)
 
 /* emits ---------------------------------------------------------------------*/
 interface Emit {
@@ -72,11 +89,13 @@ let radios:Array<Pvl.IRadio> = reactive(props.radios);
 
 /* methods -------------------------------------------------------------------*/
 function RadioClick(index:number):void{
-    if (props.radios[index].disable == false && props.disable == false){
+    if ((props.disable == false) && ((typeof props.radios[index].disable ==='undefined') || (props.radios[index].disable == false))){
         lastRadio.value = currentRadio.value;
-        radios[lastRadio.value].checked = false;
-        radios[index].checked = true;
-        currentRadio.value = index;
+        if (lastRadio.value < radios.length){
+            radios[lastRadio.value].checked = false;
+            radios[index].checked = true;
+            currentRadio.value = index;
+        }
         emit("onRadios", index, radios)
     }
 }
@@ -86,7 +105,7 @@ const GetStyle = computed((index:number):any=>{
     return function(index:number):any{
         if (radios[index].checked)
         {
-            if (radios[index].disable == false && props.disable == false){
+            if ((props.disable == false) && ((typeof props.radios[index].disable ==='undefined') || (props.radios[index].disable == false))){
                 return{
                     "--color":theme.Get("text",1),
                     "--hcolor":theme.Get("text",1),
@@ -111,7 +130,7 @@ const GetStyle = computed((index:number):any=>{
             }
         }
         else{
-            if (radios[index].disable == false && props.disable == false){
+            if ((props.disable == false) && ((typeof props.radios[index].disable ==='undefined') || (props.radios[index].disable == false))){
                 return{
                     "--color":theme.Get("text",0),
                     "--hcolor":theme.Get("text",1),
@@ -138,29 +157,47 @@ const GetStyle = computed((index:number):any=>{
     }
 })
 
+const GetIcon = computed((index:number):any=>{
+    return (index:number):any =>{
+        if (typeof props.radios[index].icon !== 'undefined'){
+            if (props.radios[index].icon === 'none'){
+                return "mdi icon-size mdi-focus-field icon-blank";
+            }
+            else{
+                return "mdi icon-size " + props.radios[index].icon;
+            }
+        }
+        else {
+            return "";
+        }
+    }
+})
+
 /* life ----------------------------------------------------------------------*/
 
 /************************ (C) COPYRIGHT 2021 Egahp *****END OF SCRIPT**********/
 </script>
 
 <style scoped>
-.radio-panel{
-    /* display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center; */
 
-    /* border: 1px solid var(--border0); */
+.icon-size{
+    font-size: 14px;
+    line-height: 20px;
+    margin-right: 2px;
+}
+
+.icon-blank{
+    color:transparent
 }
 
 .radio{
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     padding: 0px 10px;
 
     width: 50px;
     height: 20px;
-    line-height: 24px;
+    line-height: 22px;
     font-size: 14px;
     text-align: center;
     user-select: none;
@@ -188,6 +225,13 @@ const GetStyle = computed((index:number):any=>{
     --abackground:var(--primary2);
     color: var(--acolor);
     background: var(--abackground);
+}
+
+.radio-label
+{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 </style>

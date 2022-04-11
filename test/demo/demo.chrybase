@@ -1,0 +1,42 @@
+{
+    "device": {
+        "usb": 1.1,
+        "class": "0x00",
+        "subclass": "0x00",
+        "protocol": "0x00",
+        "ep0size": 64,
+        "pid": "0xffff",
+        "vid": "0xffff",
+        "version": 1
+    },
+    "config": [
+        {
+            "string": 3,
+            "selfpower": false,
+            "remotewakeup": true,
+            "power": 500,
+            "group": [
+                "X:\\web\\electron\\chryusb_configurator\\test\\test3\\hid_keyboard.chry",
+                "X:\\web\\electron\\chryusb_configurator\\test\\test3\\msc.chry"
+            ]
+        }
+    ],
+    "string": [
+        {
+            "name": "manufacturer",
+            "value": "Cherry USB Team"
+        },
+        {
+            "name": "product",
+            "value": "Demo Product"
+        },
+        {
+            "name": "serial number",
+            "value": "202204111454"
+        },
+        {
+            "name": "hid keyboard",
+            "value": "Demo HID Keyboard"
+        }
+    ]
+}

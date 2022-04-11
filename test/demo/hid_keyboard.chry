@@ -1,0 +1,26 @@
+{
+    "interface": [
+        {
+            "alternate": [
+                {
+                    "string": 4,
+                    "class": "0x03",
+                    "subclass": "0x00",
+                    "protocol": "0x00",
+                    "specific": {
+                        "type": 2
+                    },
+                    "endpoint": [
+                        {
+                            "address": 1,
+                            "direction": "in",
+                            "type": "intr",
+                            "size": 64,
+                            "interval": 1
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

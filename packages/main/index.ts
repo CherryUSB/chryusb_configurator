@@ -1,6 +1,8 @@
-import { app, BrowserWindow, ipcMain, shell } from 'electron'
+import { app, BrowserWindow, ipcMain, shell} from 'electron'
 import { release } from 'os'
+import theme from 'packages/renderer/src/theme'
 import { join } from 'path'
+import UsbConfigIpcMainMount from './UsbConfigMain'
 
 // Disable GPU Acceleration for Windows 7
 if (release().startsWith('6.1')) app.disableHardwareAcceleration()
@@ -49,6 +51,7 @@ async function createWindow() {
     win.once('ready-to-show', ()=>{
         if (win){
             win.show()
+            // console.log(app.getPath("userData"));
         }
     })
 
@@ -127,3 +130,9 @@ ipcMain.on('main.window.close', ()=>{
     }
 })
 
+function withNullAsUndefined<T>(x: T | null): T | undefined {
+    return x === null ? undefined : x;
+}
+
+
+UsbConfigIpcMainMount()

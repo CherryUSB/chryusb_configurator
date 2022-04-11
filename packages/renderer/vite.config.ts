@@ -21,7 +21,7 @@ export default defineConfig({
        * }
        */
       {
-        sqlite3: 'const sqlite3 = require("sqlite3"); export default sqlite3;',
+        sqlite3: 'const sqlite3 = require("sqlite3"); export default sqlite3;'
       },
     ),
   ],

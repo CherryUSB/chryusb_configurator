@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { ref } from "vue";
 import {ipcRenderer} from "electron";
-import { deflate } from "zlib";
+import theme from "../../theme";
 
 interface Props {
     title: string,
@@ -14,7 +14,7 @@ const props = withDefaults(defineProps<Props>(),{
 })
 
 function ButtonMenu():void{
-    console.log("ButtonMenu")
+    
 }
 
 function ButtonMin():void{
@@ -26,7 +26,7 @@ function ButtonMax():void{
 }
 
 function ButtonClose():void{
-    ipcRenderer.send("main.window.close")
+    ipcRenderer.send("usbconfig.close")
 }
 </script>
 
@@ -40,7 +40,7 @@ function ButtonClose():void{
             <el-col :span="17">{{ props.title +" " + props.version}}</el-col>
             <el-col :span="1"><button @click="ButtonMenu()"  class="mdi mdi-18px title-btn mdi-menu-down"                    ></button></el-col>
             <el-col :span="1"><button @click="ButtonMin()"   class="mdi mdi-18px title-btn mdi-minus"                        ></button></el-col>
-            <el-col :span="1"><button @click="ButtonMax()"   class="mdi mdi-14px title-btn mdi-square-outline"               ></button></el-col>
+            <el-col :span="1"><button @click="ButtonMax()"   class="mdi mdi-18px title-btn mdi-square-outline"               ></button></el-col>
             <el-col :span="1"><button @click="ButtonClose()" class="mdi mdi-18px title-btn mdi-close title-btn-danger"   ></button></el-col>
         </el-row>
     </div>

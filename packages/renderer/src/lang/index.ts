@@ -4,6 +4,7 @@ import zh_cn from './zh_cn'
 
 const i18n = createI18n({
     locale: 'zh-cn',
+    fallbackLocale: 'zh-cn',
     messages: {
         "zh-cn": zh_cn
     }

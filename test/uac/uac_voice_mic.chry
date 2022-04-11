@@ -1,0 +1,63 @@
+{
+    "interface": [
+        {
+            "alternate": [
+                {
+                    "string": 0,
+                    "class": "0x01",
+                    "subclass": "0x01",
+                    "protocol": "0x00",
+                    "specific": {
+                        "uac-header": "default",
+                        "uac-group": [
+                            {
+                                "uac-input": "0x0402",
+                                "uac-feature": "default",
+                                "uac-output": "0x0101"
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "alternate": [
+                {
+                    "string": 0,
+                    "class": "0x01",
+                    "subclass": "0x02",
+                    "protocol": "0x00"
+                },
+                {
+                    "string": 0,
+                    "class": "0x01",
+                    "subclass": "0x02",
+                    "protocol": "0x00",
+                    "specific": {
+                        "uac-specific": 0,
+                        "uac-format": {
+                            "channels": 1,
+                            "width": 16,
+                            "rate": [
+                                16000,
+                                8000
+                            ]
+                        },
+                        "uac-endpoint": "default"
+                    },
+                    "endpoint": [
+                        {
+                            "address": 1,
+                            "direction": "in",
+                            "type": "isoc",
+                            "size": 64,
+                            "interval": 1,
+                            "refresh": 0,
+                            "sync-address": 0
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

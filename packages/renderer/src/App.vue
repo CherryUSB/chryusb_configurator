@@ -1,7 +1,7 @@
 <script setup lang="ts">
 // This starter template is using Vue 3 <script setup> SFCs
 // Check out https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup
-import { computed } from 'vue';
+import { computed, onMounted } from 'vue';
 import theme from './theme';
 import PvlTitleBar from './components/util/PvlTitleBar.vue';
 
@@ -39,6 +39,7 @@ const GetStyle = computed((index:number):any=>{
     font-family: "OverpassMono-Bold";
     color: var(--text0);
     background: var(--background0);
+    user-select: none;
 }
 
 .base-layout .el-header {

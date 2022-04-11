@@ -39,7 +39,6 @@ import theme from '../../theme';
 import { Pvl } from '../../Pvl';
 import PvlRadios from './PvlRadios.vue';
 import PvlBtn from './PvlBtn.vue';
-import { configProviderContextKey } from 'element-plus';
 
 /* declare -------------------------------------------------------------------*/
 
@@ -51,10 +50,10 @@ import { configProviderContextKey } from 'element-plus';
 defineExpose({LogI,LogW,LogE,LogClean})
 /* data ----------------------------------------------------------------------*/
 const logRadios: Array<Pvl.IRadio> = reactive([
-    { disable: false, checked: true, label: "ALL" },
-    { disable: false, checked: false, label: "INFO" },
-    { disable: false, checked: false, label: "WARN" },
-    { disable: false, checked: false, label: "ERROR" }
+    {checked: true, label: "ALL" },
+    {checked: false, label: "INFO" },
+    {checked: false, label: "WARN" },
+    {checked: false, label: "ERROR" }
 ])
 
 const msgEmpty:Array<string> = [
@@ -64,7 +63,7 @@ const msgEmpty:Array<string> = [
     "<pre class='__a__'></pre>"
 ]
 
-const logdom:any = ref(null)
+const logdom = ref<any>(null)
 
 var msgIndex:Ref<number> = ref(0);
 var msgs:Array<string> = reactive(msgEmpty);
@@ -114,6 +113,8 @@ function LogClean():void {
     msgs[2] = "<pre class='__a__'></pre>";
     msgs[3] = "<pre class='__a__'></pre>";
     Reload();
+
+    // LogI("hello log");
 }
 
 /* computed ------------------------------------------------------------------*/
@@ -161,7 +162,8 @@ onMounted(()=>{
     white-space: pre-wrap;
     word-wrap: break-word;
     word-break: break-all;
-
+    user-select: text;
+    -webkit-user-select: text;
     overflow-y: scroll;
 }
 

@@ -61,7 +61,8 @@ interface IUSBEndpointInfoStr{
 }
 
 interface Props{
-    info:IUSBEndpointInfo
+    info:IUSBEndpointInfo,
+    usb:number
 }
 
 const props = withDefaults(defineProps<Props>(),{
@@ -73,7 +74,8 @@ const props = withDefaults(defineProps<Props>(),{
             size:64,
             interval:0
         }
-    }
+    },
+    usb:1.1
 })
 
 watch(
@@ -149,7 +151,6 @@ function str2Info(infoStr:IUSBEndpointInfoStr, info:IUSBEndpointInfo):void {
     var _interval = str2num(infoStr.interval);
 
     info.address = (!isNaN(_address) && (_address <= 127) && (_address >= 1)) ? _address : info.address;
-    info.size = (!isNaN(_size) && (_size <= 127) && (_size >= 1)) ? _size : info.size;
     info.interval = isUint8(_interval) ? _interval : info.interval;
 
     info.direction = infoStr.direction == "IN" ? EUSBEndpointDir_IN : EUSBEndpointDir_OUT;
@@ -158,19 +159,70 @@ function str2Info(infoStr:IUSBEndpointInfoStr, info:IUSBEndpointInfo):void {
         case "Control":{
             info.type = EUSBEndpointType.CTRL;
             info.interval = 0;
+            if(((info.size > 64) || (info.size < 1))){
+                info.size = 64;
+            }
+            info.size = (!isNaN(_size) && (_size <= 64) && (_size >= 1)) ? _size : info.size;
+            
             break;
         }
         case "Isochronous":{
             info.type = EUSBEndpointType.ISOC;
+            switch(props.usb){
+                case 1.1:
+                    if ((info.size > 1023) || (info.size < 1)){
+                        info.size = 64;
+                    }
+                    info.size = (!isNaN(_size) && (_size <= 1023) && (_size >= 1)) ? _size : info.size;
+                    break;
+                case 2.0:
+                case 2.1:
+                    if ((info.size > 1024) || (info.size < 1)){
+                        info.size = 64;
+                    }
+                    info.size = (!isNaN(_size) && (_size <= 1024) && (_size >= 1)) ? _size : info.size;
+                    break;
+            }
+            
             break;
         }
         case "Bulk":{
             info.type = EUSBEndpointType.BULK;
+            switch(props.usb){
+                case 1.1:
+                    if ((info.size > 64) || (info.size < 1)){
+                        info.size = 64;
+                    }
+                    info.size = (!isNaN(_size) && (_size <= 64) && (_size >= 1)) ? _size : info.size;
+                    break;
+                case 2.0:
+                case 2.1:
+                    if ((info.size > 512) || (info.size < 1)){
+                        info.size = 64;
+                    }
+                    info.size = (!isNaN(_size) && (_size <= 512) && (_size >= 1)) ? _size : info.size;
+                    break;
+            }
             info.interval = 0;
             break;
         }
         case "Interrupt":{
             info.type = EUSBEndpointType.INTR;
+            switch(props.usb){
+                case 1.1:
+                    if ((info.size > 64) || (info.size < 1)){
+                        info.size = 64;
+                    }
+                    info.size = (!isNaN(_size) && (_size <= 64) && (_size >= 1)) ? _size : info.size;
+                    break;
+                case 2.0:
+                case 2.1:
+                    if ((info.size > 1024) || (info.size < 1)){
+                        info.size = 64;
+                    }
+                    info.size = (!isNaN(_size) && (_size <= 1024) && (_size >= 1)) ? _size : info.size;
+                    break;
+            }
             break;
         }
 
@@ -187,6 +239,7 @@ function str2Info(infoStr:IUSBEndpointInfoStr, info:IUSBEndpointInfo):void {
 
 const check = ():void => {
     nextTick(()=>{
+        console.log(props.usb);
         str2Info(infoStr, info);
     })
 }

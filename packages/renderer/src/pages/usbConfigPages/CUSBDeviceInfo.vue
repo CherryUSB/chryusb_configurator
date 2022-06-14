@@ -157,7 +157,7 @@ function str2Info(infoStr:IUSBDeviceInfoStr, info:IUSBDeviceInfo):void{
     info.ep0size = (!isNaN(_ep0size) && _ep0size <= 64 && _ep0size >= 0) ? _ep0size : info.ep0size;
     info.pid = isUint16(_pid) ? _pid : info.pid;
     info.vid = isUint16(_vid) ? _vid : info.vid;
-    info.version = isUint8(_version) ? _version : info.version;
+    info.version = isUint16(_version) ? _version : info.version;
 
     info2Str(info, infoStr);
     emit("update:info", info);

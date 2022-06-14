@@ -2,6 +2,8 @@
 
 Cherry USB Configurator 是一个简单的易于上手的用于生成 USB 描述符的图形化配置工具.
 
+## [使用教程](https://cherryusb.readthedocs.io/zh_CN/latest/tools/index.html)
+
 ## 功能简介
 
 Cherry USB Configurator 基于Electron11 + Vue3.2 + Vite2 + TypeScript开发。 
@@ -10,7 +12,7 @@ Cherry USB Configurator 基于Electron11 + Vue3.2 + Vite2 + TypeScript开发。
 另一种是chry文件, 包含了一组功能的接口关联描述符, 接口描述符,  类特定描述符, 端点描述符的配置
 参考 test/demo文件内容
 
-Cherry USB Configurator 预计实现一下功能:
+Cherry USB Configurator 预计实现以下功能:
 - [x] 支持 USB2.0 全速和高速设备描述符配置
 - [x] 支持设备描述符生成
 - [x] 支持配置描述符生成
@@ -21,12 +23,11 @@ Cherry USB Configurator 预计实现一下功能:
 - [x] 支持 HID 类描述符生成
 - [x] 支持 MSC 类描述符生成
 - [x] 支持 CDC ACM 类描述符生成
+- [ ] 支持多组配置描述符生成
+- [ ] Other Speed 描述符生成
 - [ ] 支持 UAC 1.0 描述符生成
 - [ ] 支持 UAC 2.0 描述符生成
 - [ ] 支持 UVC 描述符生成
-- [ ] 支持多组配置描述符生成
-
-
 
 <br><br>
 

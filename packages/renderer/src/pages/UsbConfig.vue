@@ -61,7 +61,8 @@
                         :info="CUSBAssociateInfoView" @update="CUSBAssociateInfoUpdate" :ifs="CUSBAssociateInfoIFs" :strs="CUSBBaseInfoView.string"></CUSBAssociateInfo>
 
                     <CUSBEndpointInfo v-show="false || (fileRadios.length > 1) && (fileIndex >= 1) && CUSBEndpointInfoShow"
-                        :info="CUSBEndpointInfoView" @update="CUSBEndpointInfoUpdate"></CUSBEndpointInfo>
+                        :info="CUSBEndpointInfoView" @update="CUSBEndpointInfoUpdate"
+                        :usb="CUSBBaseInfoView.device.usb"></CUSBEndpointInfo>
 
                     <CUSBAlternateInfo v-show="false ||  (fileRadios.length > 1) && (fileIndex >= 1) && CUSBAlternateInfoShow"
                         :info="CUSBAlternateInfoView" @update="CUSBAlternateInfoUpdate" :strs="CUSBBaseInfoView.string"></CUSBAlternateInfo>

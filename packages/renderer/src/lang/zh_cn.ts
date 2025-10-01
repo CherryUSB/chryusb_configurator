@@ -74,8 +74,38 @@ const zh = {
             "14":"非法的Unicode字符",
             "15":"非法的转义字符",
             "16":"非法的字符"
+        },
+        group:{
+            add_iad_desc: "添加 IAD 接口关联描述符",
+            init_as_msc: "初始化为 MSC",
+            init_as_hid: "初始化为 HID",
+            init_as_cdc: "初始化为 CDC ACM",
+            init_as_uac1: "初始化为 UAC 1.0",
+            init_as_uac2: "初始化为 UAC 2.0",
+            init_as_uvc: "初始化为 UVC"
         }
+    },
+    dialogs: {
+        buttons: {
+            ok: "确定",
+            save_close: "保存并关闭",
+            close_no_save: "仅关闭不保存",
+            cancel: "取消"
+        },
+        init_project: {
+            title: "初始化工程",
+            msg: "确定要初始化工程文件吗？ 将会重置描述符",
+        },
+        unsaved_file: {
+            title: "初始化工程",
+            msg: "确定要关闭文件吗? 您还没有保存文件, 请选择是否保存文件",
+        },
+        init_packet_interface: {
+            title:"初始化分组接口",
+            msg: "初始化为 CDC ACM 串行通信设备\n分组文件用于描述一组功能类, 请勿将多个类合并在一个分组文件中\n确定要初始化吗? 将会重置描述符",
+        },
     }
+
 }
 
 export default zh

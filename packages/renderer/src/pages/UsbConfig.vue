@@ -734,9 +734,9 @@ const OnFileRadios: Pvl.IOnRadios = async function (index: number, radios?: Arra
             var saved = files[index].checkSaved();
             if (!saved){
                 var sel = await messageBox({
-                    title:"关闭文件",
-                    message:"确定要关闭文件吗? 您还没有保存文件, 请选择是否保存文件",
-                    buttons:["保存并关闭", "仅关闭不保存", "取消"],
+                    title:tm("dialogs.unsaved_file.title"),
+                    message:tm("dialogs.unsaved_file.msg"),
+                    buttons:[tm("dialogs.buttons.save_close"), tm("dialogs.buttons.close_no_save"), tm("dialogs.buttons.cancel")],
                     cancelId: 2
                 })
 
@@ -807,9 +807,9 @@ const BUSBClick = async (): Promise<void> => {
     switch(BUSBIndex){
         case ButtonIndex.ProjectInit:{
             var sel = await messageBox({
-                title:"初始化工程",
-                message:"确定要初始化工程文件吗？ 将会重置描述符",
-                buttons:["确定",  "取消"],
+                title:tm("dialogs.init_project.title"),
+                message:tm("dialogs.init_project.msg"),
+                buttons:[tm("dialogs.buttons.ok"),  tm("dialogs.buttons.cancel")],
                 cancelId: 1
             })
 
@@ -952,9 +952,9 @@ const BUSBGroupClick = async (index:EUSBClass):Promise<void>=>{
         case EUSBClass.CDC_ACM:
         case EUSBClass.CDC_ACM_DATA:{
             var sel = await messageBox({
-                title:"初始化分组接口",
-                message:"初始化为 CDC ACM 串行通信设备\n分组文件用于描述一组功能类, 请勿将多个类合并在一个分组文件中\n确定要初始化吗? 将会重置描述符",
-                buttons:["确定",  "取消"],
+                title:tm("dialogs.init_packet_interface.title"),
+                message:tm("dialogs.init_packet_interface.msg"),
+                buttons:[tm("dialogs.buttons.ok"),  tm("dialogs.buttons.cancel")],
                 cancelId: 1
             })
 

@@ -37,7 +37,39 @@ const zh = {
                 about0:"联系我们",
                 about1:"赞助我们",
                 about2:"软件说明"
-            }
+            },
+            str_desc: {
+                add: "添加字符串描述符",
+                delete:"删除字符串描述符"
+            },
+            conf_desc: {
+                add: "添加配置描述符",
+                delete: "删除配置描述符",
+            },
+            group_conf: {
+                add:"添加分组配置",
+                delete:"删除分组配置"
+            },
+            intf_desc: {
+                add: "添加接口描述符",
+                delete: "删除接口描述符",
+            },
+            alt: {
+                add: "添加接口复用描述符",
+                delete: "删除接口复用描述符",
+            },
+            spec: {
+                delete: "删除特定描述符"
+            },
+            endpoint: {
+                add: "添加端点描述符",
+                delete: "删除端点描述符"
+            },
+            iad: {
+                add: "",
+                delete: "删除接口关联描述符"
+            },
+            treeselect: "初始化工程, 重置描述符",
         },
         file:{
             basename:"CherryUSB 工程文件",
@@ -88,8 +120,11 @@ const zh = {
     dialogs: {
         buttons: {
             ok: "确定",
+            exit: "退出",
             save_close: "保存并关闭",
+            save_close_all: "保存并关闭所有文件",
             close_no_save: "仅关闭不保存",
+            close_no_save_all: "仅关闭所有文件不保存",
             cancel: "取消"
         },
         init_project: {
@@ -104,6 +139,31 @@ const zh = {
             title:"初始化分组接口",
             msg: "初始化为 CDC ACM 串行通信设备\n分组文件用于描述一组功能类, 请勿将多个类合并在一个分组文件中\n确定要初始化吗? 将会重置描述符",
         },
+        init_msc: {
+            title: "初始化分组接口",
+            msg: "初始化为 MSC 大容量存储设备\n分组文件用于描述一组功能类, 请勿将多个类合并在一个分组文件中\n确定要初始化吗? 将会重置描述符"
+        },
+        init_hid: {
+            title: "初始化分组接口",
+            msg: "初始化为 HID 人机交互设备\n分组文件用于描述一组功能类, 请勿将多个类合并在一个分组文件中\n确定要初始化吗? 将会重置描述符"
+        },
+        close_file: {
+            title: "关闭文件",
+            msg: "确定要关闭文件吗? 您还没有保存文件, 请选择是否保存文件"
+        },
+        close_project: {
+            title: "关闭工程",
+            msg: "确定要关闭工程吗? 请选择是否保存并关闭所有工程相关文件"
+        },
+        exit: {
+            title: "关闭软件",
+            msg: "确定要退出软件吗?"
+        },
+        save_project: {
+            title: "保存工程",
+            msg: "请选择是否保存所有工程相关文件",
+        },
+
     }
 
 }

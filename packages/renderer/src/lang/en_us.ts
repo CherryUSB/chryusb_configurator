@@ -22,7 +22,7 @@ const en = {
                 project0:"Create a new project",
                 project1:"Open Project",
                 project2:"Close Project",
-                project3:"Save a project",
+                project3:"Save project",
                 project4:"Save As...",
                 view0:"Dark mode",
                 view1:"Light mode",
@@ -37,11 +37,43 @@ const en = {
                 about0:"Contact us",
                 about1:"Donate to us",
                 about2:"Software Instructions"
-            }
+            },
+            str_desc: {
+                add: "Add a string descriptor",
+                delete:"Delete a string descriptor"
+            },
+            conf_desc: {
+                add: "Add a config descriptor",
+                delete:"Delete a config descriptor"
+            },
+            group_conf: {
+                add:"Add group config",
+                delete:"Delete group config"
+            },
+            intf_desc: {
+                add: "Add interface descriptor",
+                delete: "Delete interface descriptor",
+            },
+            alt: {
+                add: "Add alternate descriptor",
+                delete: "Delete alternate descriptor",
+            },
+            spec: {
+                delete: "Delete specific descriptor"
+            },
+            endpoint: {
+                add: "Add endpoint descriptor",
+                delete: "Delete endpoint descriptor"
+            },
+            iad: {
+                add: "",
+                delete: "Delete intf assoc descriptor"
+            },
+            treeselect: "Init project, reset descriptor",
         },
         file:{
-            basename:"CherryUSB project file",
-            filename:"CherryUSB description file",
+            basename:"CherryUSB project file (*.chrybase)",
+            filename:"CherryUSB description file (*.chry)",
             cname:"C name",
             savebase:"savebase",
             savefile:"savefile",
@@ -88,9 +120,12 @@ const en = {
     dialogs: {
         buttons: {
             ok: "OK",
+            exit: "Exit",
             save_close: "Save and close",
+            save_close_all: "Save and close all files",
             close_no_save: "Close without saving",
-            cancel: "Cancel"
+            close_no_save_all: "Close all files without saving",
+            cancel: "Cancel",
         },
         init_project: {
             title: "Initialize project",
@@ -103,6 +138,30 @@ const en = {
         init_packet_interface: {
             title:"Initialize packet interface",
             msg: "Initialize as CDC ACM serial communication device.\nA packet file is used to describe a group of functional classes. Do not combine multiple classes in a single packet file.\nAre you sure you want to initialize? The descriptor will be reset.",
+        },
+        init_msc: {
+            title: "Initialize group MSC",
+            msg: "Initialize to MSC Mass Storage Device. Group files are used to describe a group of functional classes. Do not combine multiple classes into one group file. Are you sure you want to initialize? The descriptors will be reset"
+        },
+        init_hid: {
+            title: "Initialize group HID",
+            msg: "Initialize to HID Human-Computer Interaction Device. Group files are used to describe a group of functional classes. Do not combine multiple classes into one group file. Are you sure you want to initialize? The descriptors will be reset."
+        },
+        close_file: {
+            title: "Close file",
+            msg: "Are you sure? file has not been saved. Please choose whether to save"
+        },
+        close_project: {
+            title: "Close project",
+            msg: "Are you sure? project has not been saved. Please choose whether to save project and all files"
+        },
+        exit: {
+            title: "Close software",
+            msg: "Are you sure you want to exit?"
+        },
+        save_project: {
+            title: "Save project",
+            msg: "Select whether to save all project files",
         },
 
     }

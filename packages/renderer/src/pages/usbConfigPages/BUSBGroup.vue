@@ -1,12 +1,12 @@
 <template>
     <div class="busb-group">
-        <PvlBtn @click="Click(EUSBClass.UNKNOWN)">添加 IAD 接口关联描述符</PvlBtn>
-        <PvlBtn @click="Click(EUSBClass.MSC)">初始化为 MSC</PvlBtn>
-        <PvlBtn @click="Click(EUSBClass.HID)">初始化为 HID</PvlBtn>
-        <PvlBtn @click="Click(EUSBClass.CDC_ACM)">初始化为 CDC ACM</PvlBtn>
-        <PvlBtn :disable="true" @click="Click(EUSBClass.UNKNOWN)">初始化为 UAC 1.0</PvlBtn>
-        <PvlBtn :disable="true" @click="Click(EUSBClass.UNKNOWN)">初始化为 UAC 2.0</PvlBtn>
-        <PvlBtn :disable="true" @click="Click(EUSBClass.UNKNOWN)">初始化为 UVC</PvlBtn>
+        <PvlBtn @click="Click(EUSBClass.UNKNOWN)">{{ $tm("usbconfig.group.add_iad_desc") }}</PvlBtn>
+        <PvlBtn @click="Click(EUSBClass.MSC)">{{ $tm("usbconfig.group.init_as_msc") }}</PvlBtn>
+        <PvlBtn @click="Click(EUSBClass.HID)">{{ $tm("usbconfig.group.init_as_hid") }}</PvlBtn>
+        <PvlBtn @click="Click(EUSBClass.CDC_ACM)">{{ $tm("usbconfig.group.init_as_cdc") }}</PvlBtn>
+        <PvlBtn :disable="true" @click="Click(EUSBClass.UNKNOWN)">{{ $tm("usbconfig.group.init_as_uac1") }}</PvlBtn>
+        <PvlBtn :disable="true" @click="Click(EUSBClass.UNKNOWN)">{{ $tm("usbconfig.group.init_as_uac2") }}</PvlBtn>
+        <PvlBtn :disable="true" @click="Click(EUSBClass.UNKNOWN)">{{ $tm("usbconfig.group.init_as_uvc") }}</PvlBtn>
     </div>
 </template>
 
@@ -37,11 +37,14 @@
 
 
 /* import --------------------------------------------------------------------*/
+import i18n from "../../lang";
+
 import PvlBtn from '../../components/util/PvlBtn.vue';
 import {EUSBClass} from '../../mainModules/UsbConfigRender';
 /* declare -------------------------------------------------------------------*/
 
 /* props ---------------------------------------------------------------------*/
+const tm = i18n.global.tm;
 
 /* emits ---------------------------------------------------------------------*/
 interface Emit {

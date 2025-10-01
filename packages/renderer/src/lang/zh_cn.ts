@@ -9,7 +9,8 @@ const zh = {
                 view:"视图",
                 compile:"编译",
                 help:"帮助",
-                about:"关于"
+                about:"关于",
+                lang: "语言",
             },
             dropdown:{
                 file0:"新建文件",

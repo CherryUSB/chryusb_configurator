@@ -8,6 +8,7 @@
             <PvlDropDown @on-list="compileOnList" :list="title_dropdown_list[3]">{{ $tm("usbconfig.title.button.compile") }}</PvlDropDown>
             <PvlDropDown @on-list="helpOnList" :list="title_dropdown_list[4]">{{ $tm("usbconfig.title.button.help") }}</PvlDropDown>
             <PvlDropDown @on-list="aboutOnList" :list="title_dropdown_list[5]">{{ $tm("usbconfig.title.button.about") }}</PvlDropDown>
+            <PvlDropDown @on-list="localeOnList" :list="kavailableLocales">{{ $tm("usbconfig.title.button.lang") }}</PvlDropDown>
         </div>
 
         <!-- 主容器 -->
@@ -367,6 +368,11 @@ let r = new UsbConfigResize(reactive({
     sel:<[boolean,boolean,boolean]> [false,false,false],
     size:<[number,number,number]> [init_treePanel_w,init_buttonPanel_h, init_messagePanel_h]
 }))
+
+let kavailableLocales: any = reactive([
+    {disable: false, label: "中文简体", icon: "mdi-translate"},
+    {disable: false, label: "English", icon: "mdi-translate"},
+])
 
 /**
  * 标题下拉菜单
@@ -1358,6 +1364,22 @@ const aboutOnList: Pvl.IOnList = (index:number, list?: Array<Pvl.IList>): void =
         }
     }
 }
+
+const localeOnList: Pvl.IOnList = (index:number, list?: Array<Pvl.IList>): void => {
+    switch(index){
+        case 0: {
+            LogI("K: selected lang 0");
+            i18n.global.locale = "zh-cn";
+            break;
+        }
+        case 1: {
+            LogI("K: selected lang 1")
+            i18n.global.locale = "en-us";
+            break;
+        }
+    }
+}
+
 
 /*!< 日志输出 */
 

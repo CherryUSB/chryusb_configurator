@@ -9,7 +9,8 @@ const en = {
                 view:"view",
                 compile:"compile",
                 help:"help",
-                about:"about"
+                about:"about",
+                lang: "Language",
             },
             dropdown:{
                 file0:"Create New File",
